@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:omt_project/features/auth/presentation/screens/Offers.dart';
+import 'package:omt_project/features/offers/presentation/screens/Offers.dart';
 import 'package:omt_project/features/settings/persentation/screens/settings_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
