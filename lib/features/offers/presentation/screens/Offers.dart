@@ -19,47 +19,48 @@ class Offers extends StatelessWidget {
       'Offer Three',
       'Offer Four',
     ];
-    return ListView.builder(
-      itemCount: images.length,
-      itemBuilder: (context, index) {
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: const Color.fromARGB(137, 244, 238, 238),
-          ),
-          height: 200,
-          width: double.infinity,
-          margin: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: const Color.fromARGB(137, 244, 238, 238),
+            ),
+            height: 200,
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
 
-          child: Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: CachedNetworkImage(
-                  imageUrl: images[index],
-                  fit: BoxFit.cover,
-                  height: 200,
-                  width: double.infinity,
-                ),
-              ),
-              Positioned(
-                bottom: 20,
-                left: 20,
-                child: Text(
-                  (titleOffers[index]),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    backgroundColor: Colors.black45,
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: CachedNetworkImage(
+                    imageUrl: images[index],
+                    fit: BoxFit.cover,
+                    height: 200,
+                    width: double.infinity,
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: Text(
+                    (titleOffers[index]),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      backgroundColor: Colors.black45,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
-
