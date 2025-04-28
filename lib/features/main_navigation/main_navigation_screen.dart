@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:omt_project/features/home/presentation/screens/home_content_screen.dart';
+import 'package:omt_project/features/home/presentation/screens/notifications_screen.dart';
 import 'package:omt_project/features/offers/presentation/screens/Offers.dart';
 import 'package:omt_project/features/settings/persentation/screens/settings_screen.dart';
 
@@ -11,9 +13,9 @@ class MainNavigationScreen extends StatefulWidget {
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   List<Widget> screens = [
-    Container(color: Colors.amber),
+    HomeContentScreen(),
     Offers(),
-    Container(color: Colors.blue),
+    NotificationsScreen(),
     Settings(),
   ];
 
