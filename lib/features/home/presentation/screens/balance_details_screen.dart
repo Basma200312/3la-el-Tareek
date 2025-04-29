@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // مهم عشان تنسيق التاريخ
+import 'package:intl/intl.dart';
 
 class BalanceDetailsScreen extends StatelessWidget {
   final double currentBalance;
@@ -14,20 +14,18 @@ class BalanceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200], // خلفية الشاشة أغمق من الأبيض بشويّة
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.white, // لون الاب بار أبيض
+        backgroundColor: Colors.white,
         elevation: 1,
         title: Text(
           'Balance Details',
           style: TextStyle(
-            color: Colors.blue.shade800, // هنا العنوان لونه أزرق غامق
+            color: Colors.blue.shade800,
             fontWeight: FontWeight.bold,
           ),
         ),
-        iconTheme: IconThemeData(
-          color: Colors.blue.shade800,
-        ), // زر الرجوع لونه أزرق برضو
+        iconTheme: IconThemeData(color: Colors.blue.shade800),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

@@ -76,7 +76,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           setState(() {
             currentIndex = index;
           });
-          // هنا تكتبي الأكشن اللي عايزاه لما تدوسي على أي أيقونة
         },
       ),
     );
