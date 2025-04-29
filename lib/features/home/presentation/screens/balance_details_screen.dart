@@ -16,17 +16,15 @@ class BalanceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200], // خلفية الشاشة أغمق من الأبيض بشويّة
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.white, // لون الاب بار أبيض
+        backgroundColor: Colors.white,
         elevation: 1,
         title: Text(
           'Balance Details',
           style: AppTextStyle.titleTextMedium24.copyWith(color: AppColors.mainColor)
         ),
-        iconTheme: IconThemeData(
-          color: Colors.blue.shade800,
-        ), // زر الرجوع لونه أزرق برضو
+        iconTheme: IconThemeData(color: Colors.blue.shade800),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

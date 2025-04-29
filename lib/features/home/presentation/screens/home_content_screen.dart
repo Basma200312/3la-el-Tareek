@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
@@ -8,7 +6,6 @@ import 'package:ala_el_tareek/features/offers/presentation/screens/Offers.dart';
 import '../screens/get_help_screen.dart';
 import '../screens/stations_screen.dart';
 import '../screens/services_screen.dart';
-import '../screens/all_offers_screen.dart';
 import 'balance_details_screen.dart';
 
 class HomeContentScreen extends StatefulWidget {
@@ -289,7 +286,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
             'Get Help',
             Colors.red,
             const GetHelpScreen(),
-            50.0,
+            0.0,
           ),
           _iconButton(
             context,
@@ -297,15 +294,23 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
             'Stations',
             Colors.blue,
             const StationsScreen(),
-            30.0,
+            0.0,
           ),
           _iconButton(
             context,
             Icons.build,
             'Services',
             Colors.amber,
-            const ServicesScreen(),
-            20.0,
+            ServicesScreen(
+              balance: _balance,
+              transactions: _transactions,
+              onDeduct: (amount) {
+                setState(() {
+                  _balance -= amount;
+                });
+              },
+            ),
+            0.0,
           ),
         ],
       ),
