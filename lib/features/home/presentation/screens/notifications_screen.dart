@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ala_el_tareek/core/app_assets.dart';
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -47,12 +50,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
+        title: Text(
           'Notifications',
-          style: TextStyle(
-            color: Color(0xFF1565C0),
-            fontWeight: FontWeight.bold,
-            fontSize: 29,
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
           ),
         ),
         centerTitle: false,
@@ -114,10 +115,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           const SizedBox(height: 20),
           Text(
             'No Notifications',
-            style: TextStyle(
-              color: Colors.grey.shade600,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            style: AppTextStyle.bodyTextMedium18.copyWith(
+              color: AppColors.grey,
             ),
           ),
         ],
@@ -147,7 +146,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             ],
           ),
           child: ClipOval(
-            child: Image.asset('images/logo_icon.jpg', fit: BoxFit.cover),
+            child: Image.asset(AppAssets.logo, fit: BoxFit.cover),
           ),
         ),
         const SizedBox(width: 16),
@@ -157,21 +156,23 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF1565C0),
+                style: AppTextStyle.bodyTextMedium18.copyWith(
+                  color: AppColors.mainColor,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
                 description,
-                style: const TextStyle(fontSize: 14, color: Colors.black54),
+                style: AppTextStyle.bodyTextRegular16.copyWith(
+                  color: AppColors.black54,
+                ),
               ),
               const SizedBox(height: 4),
               Text(
                 date,
-                style: const TextStyle(fontSize: 12, color: Colors.black45),
+                style: AppTextStyle.bodyTextRegular12.copyWith(
+                  color: AppColors.black54,
+                ),
               ),
             ],
           ),

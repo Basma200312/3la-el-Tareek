@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:omt_project/core/app_assets.dart';
-import 'package:omt_project/features/offers/presentation/screens/Offers.dart';
+import 'package:ala_el_tareek/core/app_assets.dart';
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart';
+import 'package:ala_el_tareek/features/offers/presentation/screens/Offers.dart';
 import '../screens/get_help_screen.dart';
 import '../screens/stations_screen.dart';
 import '../screens/services_screen.dart';
@@ -25,9 +27,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 30),
           _buildTopBar(),
-          const SizedBox(height: 10),
           _buildBackgroundContent(context),
           _buildOffersSection(context),
           const SizedBox(height: 30),
@@ -38,7 +38,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
 
   Widget _buildTopBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.fromLTRB(20, 50, 20, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -52,10 +52,9 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
               const SizedBox(width: 10),
               Text(
                 '3la el Tareek',
-                style: TextStyle(
-                  fontSize: 28,
+                style: AppTextStyle.titleTextMedium24.copyWith(
+                  color: AppColors.mainColor,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade800,
                 ),
               ),
             ],
@@ -136,10 +135,8 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
       children: [
         Text(
           'Balance',
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.blue.shade800,
-            fontWeight: FontWeight.w600,
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
           ),
         ),
         GestureDetector(
@@ -175,10 +172,9 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
   Widget _buildBalanceAmount() {
     return Text(
       '${_balance.toStringAsFixed(0)} EGP',
-      style: TextStyle(
-        fontSize: 36,
-        fontWeight: FontWeight.bold,
-        color: Colors.blue.shade800,
+      style: AppTextStyle.titleTextMedium24.copyWith(
+        color: AppColors.mainColor,
+        fontSize: 30,
       ),
     );
   }
@@ -196,9 +192,9 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        child: const Text(
+        child: Text(
           '+ Add Balance',
-          style: TextStyle(fontSize: 18, color: Colors.white),
+          style: AppTextStyle.bodyTextMedium16.copyWith(color: AppColors.white),
         ),
       ),
     );
@@ -215,17 +211,14 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
           ),
           title: Text(
             'Add Balance',
-            style: TextStyle(
-              color: Colors.blue.shade800, // لون العنوان أزرق
-              fontWeight: FontWeight.bold,
-            ),
+            style: AppTextStyle.bodyTextMedium16.copyWith(color: AppColors.mainColor)
           ),
           content: TextField(
             controller: amountController,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               hintText: 'Enter amount in EGP',
-              hintStyle: TextStyle(color: Colors.blue.shade800),
+              hintStyle: AppTextStyle.bodyTextRegular14,
             ),
           ),
           actions: [
@@ -247,6 +240,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
                 ),
               ),
             ),
+            SizedBox(width: 10,),
             ElevatedButton(
               onPressed: () {
                 String enteredAmount = amountController.text;
@@ -360,7 +354,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(fontSize: 14)),
+        Text(label, style: AppTextStyle.bodyTextRegular14),
       ],
     );
   }
@@ -384,10 +378,8 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
       children: [
         Text(
           'Offers',
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue.shade800,
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
           ),
         ),
         IconButton(
@@ -457,15 +449,19 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
           const SizedBox(height: 8),
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
             textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyle.bodyTextMedium14,
           ),
           const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Text(
               description,
-              style: const TextStyle(fontSize: 12, color: Colors.black54),
+              style: AppTextStyle.bodyTextRegular12.copyWith(
+                color: AppColors.black54,
+              ),
               textAlign: TextAlign.center,
             ),
           ),

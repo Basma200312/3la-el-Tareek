@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="omt_project"
+        android:label="3la el Tareek"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

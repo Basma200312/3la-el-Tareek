@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // مهم عشان تنسيق التاريخ
+import 'package:intl/intl.dart';
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart'; // مهم عشان تنسيق التاريخ
 
 class BalanceDetailsScreen extends StatelessWidget {
   final double currentBalance;
@@ -20,10 +22,7 @@ class BalanceDetailsScreen extends StatelessWidget {
         elevation: 1,
         title: Text(
           'Balance Details',
-          style: TextStyle(
-            color: Colors.blue.shade800, // هنا العنوان لونه أزرق غامق
-            fontWeight: FontWeight.bold,
-          ),
+          style: AppTextStyle.titleTextMedium24.copyWith(color: AppColors.mainColor)
         ),
         iconTheme: IconThemeData(
           color: Colors.blue.shade800,
@@ -36,18 +35,18 @@ class BalanceDetailsScreen extends StatelessWidget {
           children: [
             _buildBalanceCard(),
             const SizedBox(height: 20),
-            const Text(
+             Text(
               'Transaction History',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              style: AppTextStyle.bodyTextMedium18,
             ),
             const SizedBox(height: 10),
             Expanded(
               child:
                   transactions.isEmpty
-                      ? const Center(
+                      ?  Center(
                         child: Text(
                           'No transactions yet.',
-                          style: TextStyle(fontSize: 16),
+                          style: AppTextStyle.bodyTextRegular16,
                         ),
                       )
                       : ListView.builder(
@@ -75,9 +74,9 @@ class BalanceDetailsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             'Current Balance',
-            style: TextStyle(fontSize: 18, color: Colors.white),
+            style: AppTextStyle.bodyTextMedium16.copyWith(color: AppColors.white),
           ),
           const SizedBox(height: 10),
           Text(
@@ -113,7 +112,7 @@ class BalanceDetailsScreen extends StatelessWidget {
         ),
         title: Text(
           isAdd ? 'Balance Added' : transaction['service'] ?? 'Service Used',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: AppTextStyle.bodyTextRegular16,
         ),
         subtitle: Text(formattedDate),
         trailing: Text(
