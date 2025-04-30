@@ -1,3 +1,4 @@
+import 'package:ala_el_tareek/features/auth/presentation/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
@@ -27,7 +28,7 @@ void showLogutDialog(BuildContext context) {
               ),
               const SizedBox(height: 24),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
@@ -42,6 +43,7 @@ void showLogutDialog(BuildContext context) {
                       style: AppTextStyle.bodyTextRegular14,
                     ),
                   ),
+                  Spacer(),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.mainColor,
@@ -53,7 +55,10 @@ void showLogutDialog(BuildContext context) {
                     ),
                     onPressed: () {
                       // Logout logic
-                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (Route<dynamic> route) => false,
+                      );
                     },
                     child: Text(
                       "Confirm",

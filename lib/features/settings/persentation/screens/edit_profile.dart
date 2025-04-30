@@ -40,21 +40,18 @@ class _EditProfileState extends State<EditProfile> {
           key: _formKey,
           child: Column(
             children: [
-              // اسم المستخدم
-              // TextFormField(
-              //   controller: nameController,
-              //   decoration: const InputDecoration(labelText: 'Name'),
-              //   validator: (value) {
-              //     if (value == null || value.isEmpty) {
-              //       return 'Please enter your name'; // تحقق من الاسم
-              //     }
-              //     return null;
-              //   },
-              // ),
               TextFormField(
                 controller: nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name'; // تحقق من الاسم
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                   labelText: 'Name',
+
+                  // اسم المستخدم
                   labelStyle: AppTextStyle.bodyTextRegular16,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -65,15 +62,12 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: AppColors.grey, // لون الحواف في الوضع العادي
-                      width: 1.0,
-                    ),
+                    borderSide: BorderSide(color: AppColors.grey, width: 1.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.blue, // لون الحواف عند التركيز
+                      color: Colors.blue,
                       width: 2.0,
                     ),
                   ),
@@ -95,15 +89,12 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: AppColors.grey, // لون الحواف في الوضع العادي
-                      width: 1.0,
-                    ),
+                    borderSide: BorderSide(color: AppColors.grey, width: 1.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(
-                      color: Colors.blue, // لون الحواف عند التركيز
+                      color: Colors.blue,
                       width: 2.0,
                     ),
                   ),
@@ -111,68 +102,40 @@ class _EditProfileState extends State<EditProfile> {
                 keyboardType: TextInputType.phone,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your phone number'; // تحقق من رقم الهاتف
+                    return 'Please enter your phone number';
                   } else if (!RegExp(r'^\+?[0-9]{10,12}$').hasMatch(value)) {
-                    return 'Please enter a valid phone number'; // تحقق من صلاحية الرقم
+                    return 'Please enter a valid phone number';
                   }
                   return null;
                 },
               ),
-              // InternationalPhoneNumberInput(
-              //   onInputChanged: (PhoneNumber number) {
-              //     print(number.phoneNumber);
-              //   },
-              //   // selectorConfig: SelectorConfig(
-              //   //   // selectorType: PhoneInputSelectorType.DROPDOWN,
-              //   // ),
-              //   // ignoreBlank: false,
-              //   autoValidateMode: AutovalidateMode.disabled,
-              //   selectorTextStyle: TextStyle(color: Colors.black),
-              //   initialValue: PhoneNumber(isoCode: 'EG'),
-              //   textFieldController: phoneController,
-              //   formatInput: true,
-              //   keyboardType: TextInputType.numberWithOptions(
-              //     signed: true,
-              //     decimal: true,
-              //   ),
-              //   inputDecoration: InputDecoration(
-              //     labelText: 'Phone Number',
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(12),
-              //       borderSide: BorderSide(color: Colors.grey, width: 1.0),
-              //     ),
-              //     focusedBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(12),
-              //       borderSide: BorderSide(color: Colors.blue, width: 2.0),
-              //     ),
-              //   ),
-              //   onSaved: (PhoneNumber number) {
-              //     print('On Saved: $number');
-              //   },
-              // ),
-          
-              // const SizedBox(height: 40),
+
               Spacer(),
-              ElevatedButton(
-                 style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(AppColors.mainColor),
-               padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 150, vertical: 10))
-
-
-               ),
-                onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    // إذا كانت المدخلات صالحة، يتم حفظ البيانات
-                    Navigator.pop(context); // رجوع بعد الحفظ
-                  }
-                },
-
-                child:  Text(
-                  "Save",
-                  style: AppTextStyle.bodyTextMedium16.copyWith(color: Colors.white)
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      // إذا كانت المدخلات صالحة، يتم حفظ البيانات
+                      Navigator.pop(context); // رجوع بعد الحفظ
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 40, 99, 199),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: Text(
+                    "Save",
+                    style: AppTextStyle.bodyTextMedium16.copyWith(
+                      color: AppColors.white,
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(height: 30,)
+              SizedBox(height: 30),
             ],
           ),
         ),

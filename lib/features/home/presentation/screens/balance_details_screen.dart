@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
-import 'package:ala_el_tareek/core/app_font_style.dart'; // مهم عشان تنسيق التاريخ
+import 'package:ala_el_tareek/core/app_font_style.dart'; 
 
 class BalanceDetailsScreen extends StatelessWidget {
   final double currentBalance;

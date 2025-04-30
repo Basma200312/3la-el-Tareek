@@ -1,4 +1,4 @@
-
+import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -61,17 +61,11 @@ class Offers extends StatelessWidget {
                     height: 200,
                     width: double.infinity,
                     placeholder:
-                        (context, url) => const Center(
-                          child: CircularProgressIndicator(), 
-                        ),
+                        (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
                     errorWidget:
-                        (context, url, error) => const Center(
-                          child: Icon(
-                            Icons.error,
-                            color: Colors.red,
-                            size: 40,
-                          ),
-                        ),
+                        (context, url, error) =>
+                            Center(child: Image.asset(AppAssets.logo)),
                   ),
                 ),
 
