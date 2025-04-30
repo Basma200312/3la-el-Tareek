@@ -51,11 +51,9 @@ class _GetHelpScreenState extends State<GetHelpScreen> {
       appBar: AppBar(
         title: Text(
           'Get Help',
-         style: AppTextStyle.titleTextMedium24.copyWith(
-          fontSize: 26,
-           color: AppColors.mainColor,
-          fontWeight: FontWeight.bold,
- 
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            fontSize: 26,
+            color: AppColors.mainColor,
           ),
         ),
         backgroundColor: Colors.white,
@@ -127,8 +125,6 @@ class _GetHelpScreenState extends State<GetHelpScreen> {
                       'Help is on the way!',
                       style: AppTextStyle.titleTextMedium24.copyWith(
                         fontSize: 24,
-                        fontWeight:FontWeight.bold,
-                      
                       ),
                     ),
                   ),
