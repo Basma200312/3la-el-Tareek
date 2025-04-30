@@ -1,6 +1,7 @@
 import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
+import 'package:ala_el_tareek/features/offers/presentation/screens/offer_Details_Page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -42,45 +43,59 @@ class Offers extends StatelessWidget {
       body: ListView.builder(
         itemCount: images.length,
         itemBuilder: (context, index) {
-          return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: const Color.fromARGB(137, 244, 238, 238),
-            ),
-            height: 200,
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+          return InkWell(
+            onTap: (){
+              Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OfferDetailsPage(
+          title: titleOffers[index],
+          imageUrl: images[index],
+        ),
+      ),
+    );
 
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: CachedNetworkImage(
-                    imageUrl: images[index],
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
-                    placeholder:
-                        (context, url) =>
-                            const Center(child: CircularProgressIndicator()),
-                    errorWidget:
-                        (context, url, error) =>
-                            Center(child: Image.asset(AppAssets.logo)),
-                  ),
-                ),
-
-                Positioned(
-                  bottom: 20,
-                  left: 20,
-                  child: Text(
-                    (titleOffers[index]),
-                    style: AppTextStyle.bodyTextRegular18.copyWith(
-                      color: AppColors.white,
-                      backgroundColor: Colors.black.withOpacity(.3),
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: const Color.fromARGB(137, 244, 238, 238),
+              ),
+              height: 200,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+            
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: CachedNetworkImage(
+                      imageUrl: images[index],
+                      fit: BoxFit.cover,
+                      height: 200,
+                      width: double.infinity,
+                      placeholder:
+                          (context, url) =>
+                              const Center(child: CircularProgressIndicator()),
+                      errorWidget:
+                          (context, url, error) =>
+                              Center(child: Image.asset(AppAssets.logo)),
                     ),
                   ),
-                ),
-              ],
+            
+                  Positioned(
+                    bottom: 20,
+                    left: 20,
+                    child: Text(
+                      (titleOffers[index]),
+                      style: AppTextStyle.bodyTextRegular18.copyWith(
+                        color: AppColors.white,
+                        backgroundColor: Colors.black.withOpacity(.3),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },
