@@ -1,3 +1,6 @@
+
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +23,22 @@ class Offers extends StatelessWidget {
       'Offer Four',
     ];
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'offers',
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 252, 248, 248),
+
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search, size: 33, color: AppColors.mainColor),
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: ListView.builder(
         itemCount: images.length,
         itemBuilder: (context, index) {
@@ -41,18 +60,29 @@ class Offers extends StatelessWidget {
                     fit: BoxFit.cover,
                     height: 200,
                     width: double.infinity,
+                    placeholder:
+                        (context, url) => const Center(
+                          child: CircularProgressIndicator(), 
+                        ),
+                    errorWidget:
+                        (context, url, error) => const Center(
+                          child: Icon(
+                            Icons.error,
+                            color: Colors.red,
+                            size: 40,
+                          ),
+                        ),
                   ),
                 ),
+
                 Positioned(
                   bottom: 20,
                   left: 20,
                   child: Text(
                     (titleOffers[index]),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      backgroundColor: Colors.black45,
+                    style: AppTextStyle.bodyTextRegular18.copyWith(
+                      color: AppColors.white,
+                      backgroundColor: Colors.black.withOpacity(.3),
                     ),
                   ),
                 ),

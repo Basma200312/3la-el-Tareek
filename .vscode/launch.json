@@ -8,7 +8,7 @@
             "name": "3la-el-Tareek",
             "request": "launch",
             "type": "dart",
-            "program": "main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "3la-el-Tareek (profile mode)",

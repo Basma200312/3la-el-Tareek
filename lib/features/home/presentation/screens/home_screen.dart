@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:omt_project/features/home/presentation/screens/all_offers_screen.dart';
-import 'package:omt_project/features/home/presentation/screens/home_content_screen.dart';
-import 'package:omt_project/features/home/presentation/screens/menu_screen.dart';
-import 'package:omt_project/features/home/presentation/screens/notifications_screen.dart';
+import 'package:ala_el_tareek/features/home/presentation/screens/all_offers_screen.dart';
+import 'package:ala_el_tareek/features/home/presentation/screens/home_content_screen.dart';
+import 'package:ala_el_tareek/features/home/presentation/screens/menu_screen.dart';
+import 'package:ala_el_tareek/features/home/presentation/screens/notifications_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
