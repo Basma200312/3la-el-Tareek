@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
-import 'package:ala_el_tareek/features/offers/presentation/screens/offers.dart';
+import 'package:ala_el_tareek/features/offers/presentation/screens/Offers.dart';
 import '../screens/get_help_screen.dart';
 import '../screens/stations_screen.dart';
 import '../screens/services_screen.dart';

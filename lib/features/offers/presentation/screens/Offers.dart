@@ -1,7 +1,7 @@
 import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
-import 'package:ala_el_tareek/features/offers/presentation/screens/offer_Details_Page.dart';
+import 'package:ala_el_tareek/features/offers/presentation/screens/Offer_Details_Page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
