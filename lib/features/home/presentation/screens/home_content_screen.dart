@@ -64,10 +64,8 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               child: Text(
                 'AN',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade800,
+                style: AppTextStyle.bodyTextMedium16.copyWith(
+                  color: AppColors.mainColor,
                 ),
               ),
             ),
@@ -231,13 +229,12 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
               ),
               child: Text(
                 'Cancel',
-                style: TextStyle(
-                  color: Colors.blue.shade800,
-                  fontWeight: FontWeight.bold,
+                style: AppTextStyle.bodyTextMedium16.copyWith(
+                  color: AppColors.mainColor,
                 ),
               ),
             ),
-            SizedBox(width: 10,),
+            SizedBox(width: 10),
             ElevatedButton(
               onPressed: () {
                 String enteredAmount = amountController.text;
@@ -255,16 +252,15 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue.shade800,
+                backgroundColor: AppColors.mainColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'Confirm',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                style: AppTextStyle.bodyTextMedium16.copyWith(
+                  color: AppColors.white,
                 ),
               ),
             ),

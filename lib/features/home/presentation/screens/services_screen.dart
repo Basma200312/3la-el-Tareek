@@ -1,3 +1,6 @@
+// ignore: unused_import
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:flutter/material.dart';
 import 'service_details_screen.dart';
 
@@ -31,9 +34,11 @@ class _ServicesScreenState extends State<ServicesScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Services',
-          style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
+          ),
         ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.blue.shade800,
@@ -54,10 +59,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
               leading: Icon(service['icon'], color: Colors.blue, size: 30),
               title: Text(
                 service['name'],
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: AppTextStyle.bodyTextMedium18,
               ),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
               onTap: () {

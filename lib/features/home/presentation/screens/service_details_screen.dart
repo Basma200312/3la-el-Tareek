@@ -1,3 +1,5 @@
+import 'package:ala_el_tareek/core/app_colors.dart';
+import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:flutter/material.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
@@ -18,13 +20,11 @@ class ServiceDetailsScreen extends StatelessWidget {
         elevation: 0,
         title: Text(
           serviceName,
-          style: TextStyle(
-            color: Colors.blue.shade800,
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.blue.shade800),
+        iconTheme: IconThemeData(color: AppColors.mainColor),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -36,7 +36,7 @@ class ServiceDetailsScreen extends StatelessWidget {
             Text(
               'Confirm you want to request $serviceName service for 50 EGP?',
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 18),
+              style: AppTextStyle.bodyTextMedium16,
             ),
             const SizedBox(height: 30),
             ElevatedButton(

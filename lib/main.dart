@@ -3,8 +3,6 @@ import 'package:ala_el_tareek/features/auth/presentation/screens/login.dart';
 import 'package:ala_el_tareek/features/auth/presentation/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:ala_el_tareek/features/main_navigation/main_navigation_screen.dart';
-//import 'login_screen.dart';
-//import 'signup_screen.dart';
 
 void main() {
   runApp(const MyApp());

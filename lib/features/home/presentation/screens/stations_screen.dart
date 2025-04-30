@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:ala_el_tareek/core/app_colors.dart';
+// ignore: unused_import
+import 'package:ala_el_tareek/core/app_font_style.dart';
 
 class StationsScreen extends StatelessWidget {
   const StationsScreen({super.key});
@@ -17,10 +21,8 @@ class StationsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Stations',
-          style: TextStyle(
-            fontSize: 26,
-            color: Colors.blue.shade800,
-            fontWeight: FontWeight.bold,
+          style: AppTextStyle.titleTextMedium24.copyWith(
+            color: AppColors.mainColor,
           ),
         ),
         backgroundColor: Colors.white,
@@ -47,19 +49,16 @@ class StationsScreen extends StatelessWidget {
               ),
               title: Text(
                 station['name']!,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
+                style: AppTextStyle.bodyTextMedium16,
               ),
               subtitle: Text(
                 station['location']!,
-                style: TextStyle(color: Colors.blue.shade800),
+                style: AppTextStyle.bodyTextRegular16.copyWith(
+                  color: AppColors.mainColor,
+                ),
               ),
               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-              onTap: () {
-                // Handle tap
-              },
+              onTap: () {},
             ),
           );
         },
