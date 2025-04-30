@@ -3,7 +3,7 @@ import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:ala_el_tareek/features/home/presentation/screens/home_content_screen.dart';
 import 'package:ala_el_tareek/features/home/presentation/screens/notifications_screen.dart';
-import 'package:ala_el_tareek/features/offers/presentation/screens/offers.dart';
+import 'package:ala_el_tareek/features/offers/presentation/screens/Offers.dart';
 import 'package:ala_el_tareek/features/settings/persentation/screens/settings_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
