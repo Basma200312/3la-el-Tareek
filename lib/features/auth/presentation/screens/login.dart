@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ala_el_tareek/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-  const LoginScreen({super.key});
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -16,23 +18,23 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isPassword = true;
-  
+
   @override
-  void dispose(){
+  void dispose() {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
 
-    Future<void> signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       final userCred = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
       print(userCred);
-       // Navigate to the main screen after successful login
-                      Navigator.pushReplacementNamed(context, '/main');
+      // Navigate to the main screen after successful login
+      Navigator.pushReplacementNamed(context, '/main');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -40,8 +42,6 @@ class _LoginScreenState extends State<LoginScreen> {
         print('Wrong password provided for that user.');
       }
     }
-  }
-
   }
 
   @override
@@ -58,7 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Image.asset(AppAssets.logo, width: 150, height: 150),
                 const SizedBox(height: 10),
-
                 Text("Welcome Back!", style: AppTextStyle.titleTextMedium24),
                 const SizedBox(height: 10),
                 Text(
@@ -127,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         _isPassword ? Icons.visibility_off : Icons.visibility,
                         color: Colors.grey,
                       ),
-                      onPressed: () async {
+                      onPressed: () {
                         setState(() {
                           _isPassword = !_isPassword;
                         });
