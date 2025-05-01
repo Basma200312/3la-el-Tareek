@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ala_el_tareek/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
@@ -23,14 +21,27 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose(){
     emailController.dispose();
     passwordController.dispose();
-    super.dispose;
+    super.dispose();
   }
-  Future<void> createUserWithEmailAndPassword() async {
-    final  userCred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-    email: emailController.text.trim(),
-    password: passwordController.text.trim(),
-    );
-    print(userCred);
+
+    Future<void> signInWithEmailAndPassword() async {
+    try {
+      final userCred = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      print(userCred);
+       // Navigate to the main screen after successful login
+                      Navigator.pushReplacementNamed(context, '/main');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
+
   }
 
   @override
@@ -117,7 +128,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey,
                       ),
                       onPressed: () async {
-                        await createUserWithEmailAndPassword();
                         setState(() {
                           _isPassword = !_isPassword;
                         });
@@ -150,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushReplacementNamed(context, '/main');
+                        signInWithEmailAndPassword();
                       }
                     },
                     style: ElevatedButton.styleFrom(

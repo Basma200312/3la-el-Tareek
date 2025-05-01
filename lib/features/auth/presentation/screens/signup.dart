@@ -1,10 +1,13 @@
 import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -15,7 +18,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
   bool _isPassword = true;
+  bool _isConfirmPassword = true;
+
+ @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+    Future<void> createUserWithEmailAndPassword() async {
+    try {
+      final userCred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      print(userCred);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,10 +177,72 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pop(context);
+                    if (_formKey.currentState!.validate()) {
+                       createUserWithEmailAndPassword();
                       }
                     },
+                 
+                      
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.mainColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      "Sign Up",
+                      style: AppTextStyle.bodyTextMedium16.copyWith(
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                        // Confirm Password field
+                TextFormField(
+                  controller: confirmPasswordController,
+                  obscureText: _isConfirmPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    }
+                    if (value != passwordController.text) {
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock_outline),
+                    labelText: "Confirm Password",
+                    labelStyle: AppTextStyle.bodyTextRegular16,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isConfirmPassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _isConfirmPassword = !_isConfirmPassword;
+                        });
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: AppColors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.mainColor,
                       shape: RoundedRectangleBorder(
@@ -201,4 +287,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
 }
