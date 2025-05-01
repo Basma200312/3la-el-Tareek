@@ -2,6 +2,9 @@ import 'package:ala_el_tareek/core/app_assets.dart';
 import 'package:ala_el_tareek/core/app_colors.dart';
 import 'package:ala_el_tareek/core/app_font_style.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:ala_el_tareek/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +18,20 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isPassword = true;
+  
+  @override
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose;
+  }
+  Future<void> createUserWithEmailAndPassword() async {
+    final  userCred = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    email: emailController.text.trim(),
+    password: passwordController.text.trim(),
+    );
+    print(userCred);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         _isPassword ? Icons.visibility_off : Icons.visibility,
                         color: Colors.grey,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        await createUserWithEmailAndPassword();
                         setState(() {
                           _isPassword = !_isPassword;
                         });
