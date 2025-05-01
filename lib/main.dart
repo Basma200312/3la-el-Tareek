@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/login', 
       routes: {
-       '/': (context) => const Scaffold(body: Center(child: Text('Hello'))),
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/main': (context) => const MainNavigationScreen(), 
