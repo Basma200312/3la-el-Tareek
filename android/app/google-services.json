@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "410898686301",
+    "project_id": "bazinaka-619e2",
+    "storage_bucket": "bazinaka-619e2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410898686301:android:462ab6afd878558e4548b4",
+        "android_client_info": {
+          "package_name": "com.example.omt_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-WpgPrtNm0hCWGXSGF3kLWnTqr7Rcnzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
